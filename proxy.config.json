@@ -1,0 +1,94 @@
+
+{
+    "/api" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/register" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/login" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/user/account" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/songs/latest" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/album/add" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/albums" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/albums/most-viewed" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/songs/most-viewed" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/songs/most-downloaded" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/song/like" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/song/download/:id" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/song/update" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/upload/blog" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/upload/song" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+    
+}
