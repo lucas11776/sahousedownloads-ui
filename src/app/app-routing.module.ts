@@ -1,6 +1,7 @@
 import { NgModule, Component }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+// Pages
 import { HomeComponent }        from './pages/home/home.component';
 import { LogComponent }         from './pages/log/log.component';
 import { AccountComponent }     from './pages/account/account.component';
@@ -12,11 +13,13 @@ import { AlbumSingleComponent } from './pages/album-single/album-single.componen
 import { UploadBlogComponent }  from './pages/upload-blog/upload-blog.component';
 import { UploadSongComponent }  from './pages/upload-song/upload-song.component';
 import { ContactComponent }     from './pages/contact/contact.component';
+
+// Auth-Guard
 import { UserGuard }            from './auth/user.guard';
 import { EditorGuard }          from './auth/editor.guard';
  
 const routes: Routes = [
-  { path: '/' , component: HomeComponent },
+  { path: '' , component: HomeComponent },
   { path: 'log', component: LogComponent },
   { path: 'account', component: AccountComponent, canActivate: [UserGuard] },
   { path: 'account/:id', component: UserComponent },
