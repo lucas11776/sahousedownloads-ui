@@ -7,13 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  title:string;
-
-  
-
-}
-
-export function getYear(age){
-  var currentYear = 2019;
-  return currentYear - age - 1;
 }
