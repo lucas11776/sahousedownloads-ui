@@ -12,18 +12,20 @@ import { AlbumSingleComponent } from './pages/album-single/album-single.componen
 import { UploadBlogComponent }  from './pages/upload-blog/upload-blog.component';
 import { UploadSongComponent }  from './pages/upload-song/upload-song.component';
 import { ContactComponent }     from './pages/contact/contact.component';
+import { UserGuard }            from './auth/user.guard';
+import { EditorGuard }          from './auth/editor.guard';
  
 const routes: Routes = [
   { path: '/' , component: HomeComponent },
   { path: 'log', component: LogComponent },
-  { path: 'account', component: AccountComponent },
+  { path: 'account', component: AccountComponent, canActivate: [UserGuard] },
   { path: 'account/:id', component: UserComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'blog/:id', component: BlogSingleComponent },
   { path: 'albums', component: AlbumComponent },
   { path: 'albums/:id', component: AlbumSingleComponent },
-  { path: 'upload/blog', component: UploadBlogComponent },
-  { path: 'upload/song', component: UploadSongComponent },
+  { path: 'upload/blog', component: UploadBlogComponent, canActivate: [EditorGuard] },
+  { path: 'upload/song', component: UploadSongComponent, canActivate: [UserGuard] },
   { path: 'contact', component: ContactComponent }
 ];
 
