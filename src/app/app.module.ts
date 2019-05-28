@@ -16,6 +16,7 @@ import { AlbumComponent }       from './pages/album/album.component';
 import { AlbumSingleComponent } from './pages/album-single/album-single.component';
 import { UploadSongComponent }  from './pages/upload-song/upload-song.component';
 import { UploadBlogComponent }  from './pages/upload-blog/upload-blog.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { UploadBlogComponent }  from './pages/upload-blog/upload-blog.component'
     AlbumComponent,
     AlbumSingleComponent,
     UploadSongComponent,
-    UploadBlogComponent],
+    UploadBlogComponent,
+    NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
