@@ -48,7 +48,7 @@
         "logLevel": "debug",
         "changeOrigin": true
     },
-    "/songs/most-viewed" : {
+    "/songs/most-liked" : {
         "target": "http://localhost",
         "sucure": false,
         "logLevel": "debug",
