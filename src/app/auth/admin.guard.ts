@@ -5,11 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate{
+export class AdminGuard {
 
-  canActivate(route: RouterStateSnapshot, state: ActivatedRouteSnapshot): Observable<boolean>
-  {
-    return null;
-  }
 
 }
