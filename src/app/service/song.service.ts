@@ -16,7 +16,7 @@ export class SongService {
   /**
    * Get 100 latest songs
    * 
-   * @return Observable
+   * @return {Observable<Array<Song>>}
    */
   latest(): Observable<Array<Song>>{
     return this.http.post<Array<Song>>('songs/latest', {}).pipe(
@@ -28,7 +28,7 @@ export class SongService {
   /**
    * Get 100 most liked songs
    * 
-   * @return Observable
+   * @return {Observable<Array<Song>>}
    */
   mostLiked(): Observable<Array<Song>>{
     return this.http.post<Array<Song>>('songs/most-liked', {}).pipe(
@@ -40,7 +40,7 @@ export class SongService {
   /**
    * Get 100 most download songs
    * 
-   * @return Observable
+   * @return {Observable<Array<Song>>}
    */
   mostDownloaded(): Observable<Array<Song>>{
     return this.http.post<Array<Song>>('songs/most-downloaded', {}).pipe(
@@ -52,7 +52,7 @@ export class SongService {
   /**
    * Upload song to databse
    * 
-   * @return Observable
+   * @return {Observable<Array<Song>>}
    */
   upload(){
 
@@ -61,7 +61,7 @@ export class SongService {
   /**
    * Update song details
    * 
-   * @return Observable
+   * @return {Observable<Array<Song>>}
    */
   update(){
 
@@ -70,7 +70,7 @@ export class SongService {
   /**
    * Delete song from database
    * 
-   * @return Observable
+   * @return {Observable<Array<Song>>}
    */
   delete(songId = {song_id:Number}){
 

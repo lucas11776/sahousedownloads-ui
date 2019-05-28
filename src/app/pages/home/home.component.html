@@ -1,7 +1,14 @@
 
 
-<div *ngIf="mostLikedSongs | async as items" >
+<div *ngIf="mostLikedSongs | async as items; else loading" >
     <fieldset *ngFor="let item of items | slice:0:2" >
         <h3>{{ item.likes }}</h3>
     </fieldset>
 </div>
+
+<ng-template #loading>
+    <h1>Getting Songs</h1>
+</ng-template>
+
+
+<a routerLink="">Searh For themba</a>
