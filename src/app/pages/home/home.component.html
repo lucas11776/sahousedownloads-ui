@@ -1,0 +1,7 @@
+
+
+<div *ngIf="mostLikedSongs | async as items" >
+    <fieldset *ngFor="let item of items | slice:0:2" >
+        <h3>{{ item.likes }}</h3>
+    </fieldset>
+</div>
