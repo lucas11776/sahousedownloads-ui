@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, take }  from 'rxjs/operators';
+import { map, take, retry }  from 'rxjs/operators';
 
 import { UserService } from './user.service';
 
@@ -13,13 +13,15 @@ export class AuthService {
 
   user(): Observable<boolean>{
     return this.userServ.user.pipe(
+      retry(2),
       map(response => response.role === 1),
-      take(1),
+      take(1)
     );
   }
 
   editor(): Observable<boolean>{
     return this.userServ.user.pipe(
+      retry(2),
       map(response => response.role === 2),
       take(1)
     );
@@ -27,6 +29,7 @@ export class AuthService {
 
   admin(): Observable<boolean>{
     return this.userServ.user.pipe(
+      retry(2),
       map(response => response.role === 3),
       take(1)
     );
