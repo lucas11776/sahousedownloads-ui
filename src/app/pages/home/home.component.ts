@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
     // get latest songs
     this.latestSongs = this.songServ.latest();
 
+
     // get most liked songs
     this.mostLikedSongs = this.songServ.mostLiked();
 
