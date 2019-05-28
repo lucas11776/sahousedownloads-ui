@@ -1,14 +1,11 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
-
-/**
- * Application Routes
- * 
- * @var const
- */ 
-const routes: Routes = [];
+import { HomeComponent } from './pages/home/home.component';
+ 
+const routes: Routes = [
+  {path: '/', component: HomeComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
