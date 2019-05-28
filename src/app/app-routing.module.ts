@@ -3,7 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 
-//Application Route 
+/**
+ * Application Routes
+ * 
+ * @var const
+ */ 
 const routes: Routes = [];
 
 @NgModule({
