@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Details
 
-`SaHouseDownloads` UI functionality for api goto 
+`SaHouseDownloads` UI functionality for api goto [sahousedownloads-api](https://github.com/lucas11776/sahousedownloads-api) to get the database file send me a message with subject Requst Database to `thembangubeni04@gmail.com`.
 
 ## Development server
 
