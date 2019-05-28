@@ -30,4 +30,16 @@ export class SongService {
     )
   }
 
+  upload(){
+
+  }
+
+  update(){
+
+  }
+
+  delete(songId = {song_id:Number}){
+
+  }
+
 }
