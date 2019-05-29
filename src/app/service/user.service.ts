@@ -5,22 +5,44 @@ import { retry, catchError, take } from 'rxjs/operators';
 
 import { UserAccount }      from '../models/user';
 import { HttpErrorService } from './http-error.service';
+import { Register, RegisterResponse } from '../models/register'; 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  /**
+   * User details
+   * 
+   * @var {Observable<UserAccount>}
+   */
   user: Observable<UserAccount>;
 
   constructor(private http: HttpClient, private httpError: HttpErrorService) {
-    // get user details form token
+    // decrypt user token from serve
     this.user = this.http.post<UserAccount>('user/account', {}).pipe(
       retry(2),
       take(1),
       catchError(this.httpError.error)
     );
   }
+
+  /**
+   * Register user/client
+   * 
+   * @param {Register}
+   * @return {Observable<RegisterResponse>}
+   */
+  register(application:Register): Observable<RegisterResponse>{
+    return this.http.post<RegisterResponse>('register', application).pipe(
+      retry(2),
+      take(1),
+      catchError(this.httpError.getError)
+    );
+  }
+
+
 
 
 }

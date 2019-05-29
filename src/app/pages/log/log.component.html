@@ -1,1 +1,17 @@
+
+<div *ngIf="httpError">
+  <h1 style="color: red;">{{httpError}}</h1>
+</div>
+
+<div *ngIf="!registerResponse?.response">
+  <ul>
+    <li *ngIf="registerResponse?.data.username" >{{ registerResponse?.data.username }}</li>
+    <li *ngIf="registerResponse?.data.email" >{{ registerResponse?.data.email }}</li>
+    <li *ngIf="registerResponse?.data.name" >{{ registerResponse?.data.name }}</li>
+    <li *ngIf="registerResponse?.data.surname" >{{ registerResponse?.data.surname }}</li>
+    <li *ngIf="registerResponse?.data.password" >{{ registerResponse?.data.passoword }}</li>
+    <li *ngIf="registerResponse?.data.confirm_password" >{{ registerResponse?.data.confirm_password }}</li>
+  </ul>
+</div>
+
 <app-register (register)="registerUser($event)"></app-register>

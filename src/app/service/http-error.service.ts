@@ -44,6 +44,16 @@ export class HttpErrorService {
   }
 
   /**
+   * Get http Error
+   * 
+   * @param {HttpErrorResponse} error 
+   * @return {Error}
+   */
+  getError(error:HttpErrorResponse){
+    return throwError(error.message);
+  }
+
+  /**
    * Notifier user about error that accured in error model
    * 
    * @param {number} errorCode - http error code
