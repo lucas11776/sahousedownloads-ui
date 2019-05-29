@@ -1,7 +1,7 @@
 import { BrowserModule }    from '@angular/platform-browser';
 import { NgModule }         from '@angular/core';
-import { FormsModule }      from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule }     from './app-routing.module';
 import { AppComponent }         from './app.component';
@@ -16,8 +16,8 @@ import { AlbumComponent }       from './pages/album/album.component';
 import { AlbumSingleComponent } from './pages/album-single/album-single.component';
 import { UploadSongComponent }  from './pages/upload-song/upload-song.component';
 import { UploadBlogComponent }  from './pages/upload-blog/upload-blog.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { RegisterComponent } from './components/register/register.component';
+import { NavbarComponent }      from './components/navbar/navbar.component';
+import { RegisterComponent }    from './components/register/register.component';
 
 
 @NgModule({
@@ -40,7 +40,8 @@ import { RegisterComponent } from './components/register/register.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

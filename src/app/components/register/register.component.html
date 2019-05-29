@@ -1,3 +1,33 @@
-<p>
-  register works!
-</p>
+<h1>Register</h1>
+
+<form [formGroup]="registerForm" novalidate>
+  <fieldset>
+    <label for="username">Username</label>
+    <input type="text" id="username" formControlName="username">
+  </fieldset>
+  <fieldset>
+    <label for="email">Email</label>
+    <input type="email" id="email" formControlName="email">
+  </fieldset>
+  <fieldset>
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="name">
+  </fieldset>
+  <fieldset>
+    <label for="surname">Surname</label>
+    <input type="text" id="surname" formControlName="surname">
+  </fieldset>
+  <fieldset>
+    <label for="password">Password</label>
+    <input type="password" id="password" formControlName="password">
+  </fieldset>
+  <fieldset>
+    <label for="confirm_password">Password</label>
+    <input type="password" id="confirm_password" formControlName="confirm_password">
+  </fieldset>
+  <fieldset>
+    <button (click)="register()">Register</button>
+  </fieldset>
+</form>
+
+<h3>{{ registerForm?.value | json }}</h3>
