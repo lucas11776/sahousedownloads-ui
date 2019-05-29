@@ -43,12 +43,22 @@ export class UserService {
    * Login user/client
    * 
    * @param {Login}
-   * @return {Observable<LoginResponse>}
+   * @return Observable
    */
   login(Login:Login): Observable<LoginResponse>{
     return this.http.post<LoginResponse>('login', Login).pipe(
       retry(2), take(1), catchError(this.httpError.getError)
     );
   }
+
+  /**
+   * Get user token from brower storage
+   * 
+   * @return string
+   */
+  token(){
+    return '7ce602fac6951a4c677fa211a21d22726ea7d8229832fd4fcac93a1608c88f3946abf504dce74eb38156f805835b9ed070f017ea728b171d0a2360b0df0e52e9i8BKAeKDF5u+oS4MUiavlq8BNUpgQO5rqlgDcUTv8w9dHcoOAfo8CkfYXLw/42zXDBEYvnDbRgl3EWFnK+6OYZCVbz6y/0oQAEC0y8+7qlz8JhjB+PIru8FZSElK7t03';
+  }
+
 
 }
