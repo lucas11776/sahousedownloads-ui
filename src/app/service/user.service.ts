@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { retry, catchError, take } from 'rxjs/operators';
 
-import { UserAccount }      from '../models/user';
-import { Login, LoginResponse } from '../models/login';
-import { HttpErrorService } from './http-error.service';
+import { UserAccount }           from '../models/user';
+import { Login, LoginResponse }  from '../models/login';
+import { HttpErrorService }      from './http-error.service';
 import { Register, RegisterResponse } from '../models/register'; 
 
 @Injectable({
