@@ -1,7 +1,7 @@
 import { BrowserModule }    from '@angular/platform-browser';
 import { NgModule }         from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 
 import { AppRoutingModule }     from './app-routing.module';
 import { AppComponent }         from './app.component';
@@ -19,7 +19,7 @@ import { UploadBlogComponent }  from './pages/upload-blog/upload-blog.component'
 import { NavbarComponent }      from './components/navbar/navbar.component';
 import { RegisterComponent }    from './components/register/register.component';
 import { LoginComponent }       from './components/login/login.component';
-import { TokenInterceptor } from './interceptor/token-interceptor.service';
+import { TokenInterceptor }     from './interceptor/token-interceptor.service';
 
 
 @NgModule({
