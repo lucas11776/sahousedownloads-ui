@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { retry, catchError, take } from 'rxjs/operators';
 
 import { UserAccount }      from '../models/user';
+import { Login, LoginResponse } from '../models/login';
 import { HttpErrorService } from './http-error.service';
 import { Register, RegisterResponse } from '../models/register'; 
 
@@ -42,7 +43,18 @@ export class UserService {
     );
   }
 
-
-
-
+  /**
+   * Login user/client
+   * 
+   * @param {Login}
+   * @return {Observable<LoginResponse>}
+   */
+  login(Login:Login): Observable<LoginResponse>{
+    return this.http.post<LoginResponse>('login', Login).pipe(
+      retry(2),
+      take(1),
+      catchError(this.httpError.getError)
+    );
+  }
+  
 }
