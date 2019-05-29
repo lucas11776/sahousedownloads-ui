@@ -19,7 +19,7 @@ export class AuthService {
   user(): Observable<boolean>{
     return this.userServ.user.pipe(
       retry(2),
-      map(response => response.role === 1 || response.role === 2 || response.role === 3),
+      map(response => response.role == 1 || response.role == 2 || response.role == 3),
       take(1)
     );
   }
@@ -32,7 +32,7 @@ export class AuthService {
   editor(): Observable<boolean>{
     return this.userServ.user.pipe(
       retry(2),
-      map(response => response.role === 2 || response.role === 3),
+      map(response => response.role == 2 || response.role == 3),
       take(1)
     );
   }
@@ -45,7 +45,7 @@ export class AuthService {
   admin(): Observable<boolean>{
     return this.userServ.user.pipe(
       retry(2),
-      map(response => response.role === 3),
+      map(response => response.role == 3),
       take(1)
     );
   }
