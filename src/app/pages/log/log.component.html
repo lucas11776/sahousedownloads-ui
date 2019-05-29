@@ -34,9 +34,11 @@
 <div *ngIf="view">
   <div *ngIf="!loginResponse?.response">
     <ul>
-      
-      <li *ngIf="loginResponse?.data.message" >{{ registerResponse?.data.message }}</li>
+      <li *ngIf="loginResponse?.data.message" >{{ loginResponse?.data.message }}</li>
     </ul>
   </div>
+  <h1 *ngIf="loginResponse?.response">
+    WebToken : {{ loginResponse?.data | json }}
+  </h1>
   <app-login (login)="loginUser($event)"></app-login>
 </div>

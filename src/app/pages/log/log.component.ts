@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { UserService } from '../../service/user.service';
 import { Register, RegisterResponse }    from '../../models/register';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Login } from 'src/app/models/login';
+import { Login, LoginResponse } from 'src/app/models/login';
 
 @Component({
   selector: 'app-log',
@@ -14,9 +13,9 @@ export class LogComponent implements OnInit {
 
   error:string;
   registerResponse:RegisterResponse;
-  loginResponse: {response:boolean,data:{username:string,password:string}};
+  loginResponse: LoginResponse;
   hasAccount:boolean;
-  view:boolean; // true == login-view || false == register-view
+  view:boolean; // (true = login || false = register)
 
   constructor(private user: UserService) {
     this.view = false;
@@ -29,14 +28,15 @@ export class LogComponent implements OnInit {
     this.clear(); // clear errors
     this.user.register($event).subscribe(
       response => this.registerResponse = response,
-      error => this.error = error
+      error    => this.error = error
     );
   }
 
   loginUser($event:Login){
     this.clear(); // clear errors
     this.user.login($event).subscribe(
-      
+      response => this.loginResponse = response,
+      error    => this.error = error
     );
   }
 
