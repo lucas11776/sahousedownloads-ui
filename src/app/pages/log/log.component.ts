@@ -11,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class LogComponent implements OnInit {
 
-  httpError:string;
+  error:string;
   registerResponse:RegisterResponse;
   loginResponse: {response:boolean,data:{username:string,password:string}};
   hasAccount:boolean;
@@ -22,17 +22,27 @@ export class LogComponent implements OnInit {
   }
 
   registerUser($event:Register){
-    // clear errors/register response
-    this.registerResponse = null; this.httpError = null;        
-    this.user.register($event)
-    .subscribe(
+    this.clear('register'); // clear errors
+    this.user.register($event).subscribe(
       response => this.registerResponse = response,
-      error => this.httpError = error
+      error => this.error = error
     )
   }
 
   loginUser(){
-    this.loginResponse = null;
+    this.clear('login'); // clear errors
+  }
+
+  clear(request:string){
+    this.error = null;
+    switch(request){
+      case 'register':
+        this.registerResponse = null;
+        break;
+      case 'login':
+        this.loginResponse = null;
+        break;
+    }
   }
 
 }
