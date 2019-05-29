@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { Register, RegisterResponse }    from '../../models/register';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Login } from 'src/app/models/login';
 
 @Component({
   selector: 'app-log',
@@ -15,34 +16,39 @@ export class LogComponent implements OnInit {
   registerResponse:RegisterResponse;
   loginResponse: {response:boolean,data:{username:string,password:string}};
   hasAccount:boolean;
+  view:boolean; // true == login-view || false == register-view
 
-  constructor(private user: UserService) { }
+  constructor(private user: UserService) {
+    this.view = false;
+  }
 
   ngOnInit() {
   }
 
   registerUser($event:Register){
-    this.clear('register'); // clear errors
+    this.clear(); // clear errors
     this.user.register($event).subscribe(
       response => this.registerResponse = response,
       error => this.error = error
-    )
+    );
   }
 
-  loginUser(){
-    this.clear('login'); // clear errors
+  loginUser($event:Login){
+    this.clear(); // clear errors
+    this.user.login($event).subscribe(
+      
+    );
   }
 
-  clear(request:string){
+  switchView(){
+    this.clear(); // clear errors
+    this.view = !this.view;
+  }
+
+  clear(){
     this.error = null;
-    switch(request){
-      case 'register':
-        this.registerResponse = null;
-        break;
-      case 'login':
-        this.loginResponse = null;
-        break;
-    }
+    this.registerResponse = null;
+    this.loginResponse = null;
   }
 
 }

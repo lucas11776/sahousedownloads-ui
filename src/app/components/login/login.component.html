@@ -1,3 +1,15 @@
-<p>
-  login works!
-</p>
+<h1>Login</h1>
+
+<form [formGroup]="loginForm" novalidate>
+  <fieldset>
+    <label for="username">Username</label>
+    <input type="text" id="username" formControlName="username">
+  </fieldset>
+  <fieldset>
+    <label for="password">Password</label>
+    <input type="password" id="password" formControlName="password">
+  </fieldset>
+  <fieldset>
+    <button (click)="login()">Register</button>
+  </fieldset>
+</form>

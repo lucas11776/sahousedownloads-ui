@@ -1,17 +1,42 @@
 
+<br/><br/>
+
+<button (click)="switchView()">
+  <span *ngIf="!view">Login</span>
+  <span *ngIf="view">Register</span>
+</button>
+
 <div *ngIf="httpError">
-  <h1 style="color: red;">{{httpError}}</h1>
+  <h3 style="color:#ddd;">Error</h3>
+  <h4 style="color: red;">{{httpError}}</h4>
 </div>
 
-<div *ngIf="!registerResponse?.response">
-  <ul>
-    <li *ngIf="registerResponse?.data.username" >{{ registerResponse?.data.username }}</li>
-    <li *ngIf="registerResponse?.data.email" >{{ registerResponse?.data.email }}</li>
-    <li *ngIf="registerResponse?.data.name" >{{ registerResponse?.data.name }}</li>
-    <li *ngIf="registerResponse?.data.surname" >{{ registerResponse?.data.surname }}</li>
-    <li *ngIf="registerResponse?.data.password" >{{ registerResponse?.data.passoword }}</li>
-    <li *ngIf="registerResponse?.data.confirm_password" >{{ registerResponse?.data.confirm_password }}</li>
-  </ul>
+<!--
+  Register view
+-->
+<div *ngIf="!view" >
+  <app-register (register)="registerUser($event)"></app-register>
+  <div *ngIf="!registerResponse?.response">
+    <ul>
+      <li *ngIf="registerResponse?.data.username" >{{ registerResponse?.data.username }}</li>
+      <li *ngIf="registerResponse?.data.email" >{{ registerResponse?.data.email }}</li>
+      <li *ngIf="registerResponse?.data.name" >{{ registerResponse?.data.name }}</li>
+      <li *ngIf="registerResponse?.data.surname" >{{ registerResponse?.data.surname }}</li>
+      <li *ngIf="registerResponse?.data.password" >{{ registerResponse?.data.passoword }}</li>
+      <li *ngIf="registerResponse?.data.confirm_password" >{{ registerResponse?.data.confirm_password }}</li>
+    </ul>
+  </div>
 </div>
 
-<app-register (register)="registerUser($event)"></app-register>
+<!--
+  Login view
+-->
+<div *ngIf="view">
+  <div *ngIf="!loginResponse?.response">
+    <ul>
+      
+      <li *ngIf="loginResponse?.data.message" >{{ registerResponse?.data.message }}</li>
+    </ul>
+  </div>
+  <app-login (login)="loginUser($event)"></app-login>
+</div>
