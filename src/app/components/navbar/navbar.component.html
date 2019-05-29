@@ -9,11 +9,15 @@
     <li><a [routerLink]="['upload/blog']">Post Blog</a></li>
     <li><a [routerLink]="['contact']">Contact</a></li>
     <li class="search">
-      <form>
-        <input placeholder="search">
+      <form [formGroup]="searchForm">
+        <input placeholder="search" formControlName="search">
         <button>SEARCH</button>
       </form>
     </li>
     <div class="clear"></div>
   </ul>
 </div>
+
+<hr/>
+<h1>{{ searchForm.value | json }}</h1>
+<hr/>

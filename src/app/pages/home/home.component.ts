@@ -4,6 +4,7 @@ import { Observable }        from 'rxjs';
 
 import { Song } from '../../models/song';
 import { SongService } from '../../service/song.service';
+import { SearchService } from '../../service/search.service';
 
 @Component({
   selector: 'app-home',
@@ -20,10 +21,13 @@ export class HomeComponent implements OnInit {
   latestSongs    = new Observable<Array<Song>>();
   mostLikedSongs = new Observable<Array<Song>>();
 
-  constructor(private songServ: SongService, private router: Router) {
+  constructor(private songServ: SongService,
+              private router: Router,
+              private searchServ: SearchService) {
+    // router change event
     this.router.events.subscribe((event:RouterEvent) => {
       console.log(event);
-    })
+    });
   }
 
   ngOnInit() {
