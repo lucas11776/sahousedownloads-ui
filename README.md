@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
 
+## Details
+
+`SaHouseDownloads` UI functionality for api goto [sahousedownloads-api](https://github.com/lucas11776/sahousedownloads-api) to get the database file send me a message with subject Requst Database to `thembangubeni04@gmail.com`.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
