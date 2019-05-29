@@ -14,7 +14,7 @@ export class LogComponent implements OnInit {
   error:string;
   registerResponse:RegisterResponse;
   loginResponse: LoginResponse;
-  hasAccount:boolean;
+  hasAccount:boolean = false;
   view:boolean; // (true = login || false = register)
 
   constructor(private user: UserService) {
@@ -47,8 +47,13 @@ export class LogComponent implements OnInit {
 
   clear(){
     this.error = null;
-    this.registerResponse = null;
     this.loginResponse = null;
+    // check if user has not register
+    if(typeof(this.registerResponse) === 'object'){
+      if(this.registerResponse.response !== true){
+        this.registerResponse = null;
+      }
+    }
   }
 
 }
