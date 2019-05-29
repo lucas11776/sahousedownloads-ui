@@ -23,9 +23,7 @@ export class UserService {
   constructor(private http: HttpClient, private httpError: HttpErrorService) {
     // decrypt user token from serve
     this.user = this.http.post<UserAccount>('user/account', {}).pipe(
-      retry(2),
-      take(1),
-      catchError(this.httpError.error)
+      retry(2), take(1), catchError(this.httpError.error)
     );
   }
 
@@ -37,9 +35,7 @@ export class UserService {
    */
   register(application:Register): Observable<RegisterResponse>{
     return this.http.post<RegisterResponse>('register', application).pipe(
-      retry(2),
-      take(1),
-      catchError(this.httpError.getError)
+      retry(2), take(1), catchError(this.httpError.getError)
     );
   }
 
@@ -51,10 +47,8 @@ export class UserService {
    */
   login(Login:Login): Observable<LoginResponse>{
     return this.http.post<LoginResponse>('login', Login).pipe(
-      retry(2),
-      take(1),
-      catchError(this.httpError.getError)
+      retry(2), take(1), catchError(this.httpError.getError)
     );
   }
-  
+
 }
