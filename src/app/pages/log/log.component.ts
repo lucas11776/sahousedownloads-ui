@@ -14,6 +14,7 @@ export class LogComponent implements OnInit {
   httpError:string;
   registerResponse:RegisterResponse;
   loginResponse: {response:boolean,data:{username:string,password:string}};
+  hasAccount:boolean;
 
   constructor(private user: UserService) { }
 
