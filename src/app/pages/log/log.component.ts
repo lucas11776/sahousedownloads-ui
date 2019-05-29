@@ -22,9 +22,10 @@ export class LogComponent implements OnInit {
   }
 
   registerUser($event:Register){
-    this.registerResponse = null; // clear prev response (on register)
-    this.httpError = null;        // clear http error (on register)
-    this.user.register($event).subscribe(
+    // clear errors/register response
+    this.registerResponse = null; this.httpError = null;        
+    this.user.register($event)
+    .subscribe(
       response => this.registerResponse = response,
       error => this.httpError = error
     )
