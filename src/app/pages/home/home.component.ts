@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit {
     this.router.events.subscribe((event:RouterEvent) => {
       console.log(event);
     });
+    // get search value from navbar search input
+    this.searchServ.search.subscribe(filter => this.filterTerm = filter);
   }
 
   ngOnInit() {

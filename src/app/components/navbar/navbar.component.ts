@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { map } from 'rxjs/operators';
+import { map, debounceTime } from 'rxjs/operators';
 
 import { SearchService } from '../../service/search.service';
 
@@ -11,8 +11,20 @@ import { SearchService } from '../../service/search.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private formBulder: FormBuilder, 
-              private searchServ: SearchService) { }
+  search:FormControl;
+  searchForm:FormGroup;
 
-  ngOnInit(){}
+  constructor(private formBulder: FormBuilder, private searchServ: SearchService) { }
+
+  ngOnInit(){
+    this.search = new FormControl('');
+    this.searchForm = this.formBulder.group({
+      'search': this.search
+    });
+    this.search.valueChanges.pipe(
+      debounceTime(800)
+    )
+    .subscribe((value:string) => this.searchServ.emit(value));
+  }
+
 }
