@@ -1,6 +1,6 @@
 import { BrowserModule }    from '@angular/platform-browser';
 import { NgModule }         from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule }     from './app-routing.module';
@@ -18,7 +18,8 @@ import { UploadSongComponent }  from './pages/upload-song/upload-song.component'
 import { UploadBlogComponent }  from './pages/upload-blog/upload-blog.component';
 import { NavbarComponent }      from './components/navbar/navbar.component';
 import { RegisterComponent }    from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent }       from './components/login/login.component';
+import { TokenInterceptor } from './interceptor/token-interceptor.service';
 
 
 @NgModule({
@@ -45,7 +46,11 @@ import { LoginComponent } from './components/login/login.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
