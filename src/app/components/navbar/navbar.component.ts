@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {  } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -7,10 +8,25 @@ import {  } from '@angular/forms';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  
+  search:FormControl;
+  searchForm:FormGroup;
 
-  constructor() { }
+  constructor(private formBulder: FormBuilder) { }
 
-  ngOnInit() {
+  ngOnInit(){
+    this.search = new FormControl('');
+    this.searchForm = this.formBulder.group({
+      search: this.search
+    });
+    // deley
+    this.search.valueChanges.pipe(
+      debounceTime(500)
+    );
+  }
+
+  applicationSearch(){
+
   }
 
 }

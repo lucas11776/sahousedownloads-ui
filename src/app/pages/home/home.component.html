@@ -1,5 +1,3 @@
-
-
 <div *ngIf="mostLikedSongs | async as items; else loading" >
     <fieldset *ngFor="let item of items | slice:0:2" >
         <h3>{{ item.likes }}</h3>

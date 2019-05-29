@@ -1,3 +1,19 @@
-<p>
-  navbar works!
-</p>
+<div>
+  <ul>
+    <li><a [routerLink]="['']">Home</a></li>
+    <li><a [routerLink]="['blog']">Blog</a></li>
+    <li><a [routerLink]="['account']">account</a></li>
+    <li><a [routerLink]="['log']">Login/Register</a></li>
+    <li><a [routerLink]="['albums']">Albums</a></li>
+    <li><a [routerLink]="['upload/song']">Upload Track</a></li>
+    <li><a [routerLink]="['upload/blog']">Post Blog</a></li>
+    <li><a [routerLink]="['contact']">Contact</a></li>
+    <li class="search">
+      <form>
+        <input placeholder="search">
+        <button>SEARCH</button>
+      </form>
+    </li>
+    <div class="clear"></div>
+  </ul>
+</div>
