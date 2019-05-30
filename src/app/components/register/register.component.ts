@@ -37,7 +37,12 @@ export class RegisterComponent implements OnInit {
 
   passwordMatch(control:FormControl){
     if(control){
-      const password = [''];
+      const password = control.root.get('password').value;
+      const confirm_password = control.value();
+      if(password !== confirm_password){
+        return { password_match : false };
+      }
+      return true;
     }
     return false;
   }
