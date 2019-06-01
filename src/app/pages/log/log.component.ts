@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { UserService } from '../../service/user.service';
 import { Register, RegisterResponse }    from '../../models/register';
@@ -12,12 +13,16 @@ import { Login, LoginResponse } from 'src/app/models/login';
 export class LogComponent implements OnInit {
 
   error:string;
+
   registerResponse:RegisterResponse;
+
   loginResponse: LoginResponse;
+
   hasAccount:boolean = false;
+  
   view:boolean; // (true = login || false = register)
 
-  constructor(private user: UserService) {
+  constructor(private user: UserService, private router: Router) {
     this.view = false;
   }
 
@@ -25,35 +30,41 @@ export class LogComponent implements OnInit {
   }
 
   registerUser($event:Register){
-    this.clear(); // clear errors
+    this.clear();
     this.user.register($event).subscribe(
-      response => this.registerResponse = response,
-      error    => this.error = error
+      response => {
+        this.registerResponse = response;
+        if(response.response){
+          this.hasAccount = response.response;
+        }
+      },
+      error => this.error = error
     );
   }
 
   loginUser($event:Login){
     this.clear(); // clear errors
     this.user.login($event).subscribe(
-      response => this.loginResponse = response,
-      error    => this.error = error
+      response => {
+        this.loginResponse = response;
+        if(response.response){
+          this.user.setToken(response.data.token);
+          this.router.navigate(['']);
+        }
+      },
+      error => alert(error)
     );
   }
 
   switchView(){
-    this.clear(); // clear errors
+    this.clear();
     this.view = !this.view;
   }
 
   clear(){
     this.error = null;
     this.loginResponse = null;
-    // check if user has not register
-    if(typeof(this.registerResponse) === 'object'){
-      if(this.registerResponse.response !== true){
-        this.registerResponse = null;
-      }
-    }
+    this.registerResponse = null;
   }
 
 }

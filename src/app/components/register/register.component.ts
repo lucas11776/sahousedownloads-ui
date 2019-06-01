@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
       'name':     ['', [ Validators.maxLength(50) ]],
       'surname':  ['', [ Validators.maxLength(50) ]],
       'password': ['', [ Validators.required, Validators.pattern('[(a-z|A-Z){4,6}(0-9){1,}(!|@|#|$|%|^|*|(|)|+|?){1,}]{6,20}') ]],
-      'confirm_password': ['', [ Validators.required, this.passwordMatch ]]
+      'confirm_password': ['', [ this.passwordMatch ]]
     });
   }
 
@@ -37,12 +37,15 @@ export class RegisterComponent implements OnInit {
 
   passwordMatch(control:FormControl){
     if(control){
-      const password = control.root.get('password').value;
-      const confirm_password = control.value();
-      if(password !== confirm_password){
-        return { password_match : false };
+      const confirmPasswordControl = control.root.get('confirm_password');
+      if(confirmPasswordControl){
+        const password = control.value;
+        const confirmPassword = confirmPasswordControl.value;
+        if(password !== confirmPassword){
+          return {passwordMatch: true};
+        }
+        return {passwordMatch: false}
       }
-      return true;
     }
     return false;
   }

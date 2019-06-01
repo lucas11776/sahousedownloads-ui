@@ -4,26 +4,47 @@
   <fieldset>
     <label for="username">Username</label>
     <input type="text" id="username" formControlName="username">
+    <div *ngIf="registerForm.controls.username.dirty && registerForm.controls.username.invalid">
+      <p *ngIf="registerForm.controls.username.errors?.required">Username is required.</p>
+    </div>
   </fieldset>
   <fieldset>
     <label for="email">Email</label>
     <input type="email" id="email" formControlName="email">
+    <div *ngIf="registerForm.controls.email.dirty && registerForm.controls.email.invalid">
+        <p *ngIf="registerForm.controls.email.errors?.required">Email is required.</p>
+        <p *ngIf="registerForm.controls.email.errors?.email">Invalid email addres please enter corrent one.</p>
+      </div>
   </fieldset>
   <fieldset>
     <label for="name">Name</label>
     <input type="text" id="name" formControlName="name">
+    <div *ngIf="registerForm.controls.name.dirty && registerForm.controls.name.invalid">
+      <p *ngIf="registerForm.controls.name.errors?.required">Username is required.</p>
+    </div>
   </fieldset>
   <fieldset>
     <label for="surname">Surname</label>
     <input type="text" id="surname" formControlName="surname">
+    <div *ngIf="registerForm.controls.surname.dirty && registerForm.controls.surname.invalid">
+      <p *ngIf="registerForm.controls.surname.errors?.required">Username is required.</p>
+    </div>
   </fieldset>
   <fieldset>
     <label for="password">Password</label>
     <input type="password" id="password" formControlName="password">
+    <div *ngIf="registerForm.controls.password.dirty && registerForm.controls.password.invalid">
+      <p *ngIf="registerForm.controls.password.errors?.required">Password is required.</p>
+      <p *ngIf="registerForm.controls.password.errors?.pattern">Password is weak please include this char ().</p>
+    </div>
   </fieldset>
   <fieldset>
     <label for="confirm_password">Password</label>
     <input type="password" id="confirm_password" formControlName="confirm_password">
+    <div *ngIf="registerForm.controls.confirm_password.dirty && registerForm.controls.confirm_password.invalid">
+      <p *ngIf="registerForm.controls.confirm_password.errors?.required">Username is required.</p>
+      <p *ngIf="registerForm.controls.password.errors?.passwordMatch">Confirm passoword deos not match password.</p>
+    </div>
   </fieldset>
   <fieldset>
     <button (click)="register()">Register</button>

@@ -15,7 +15,9 @@
   Register view
 -->
 <div *ngIf="!view" >
-  <app-register (register)="registerUser($event)" *ngIf="!registerResponse?.response"></app-register>
+  <div *ngIf="!registerResponse?.response">
+    <app-register (register)="registerUser($event)" ></app-register>
+  </div>
   <h1 style="color: lime">{{ registerResponse?.data.message }}</h1>
   <div *ngIf="!registerResponse?.response">
     <ul>
