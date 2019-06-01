@@ -30,12 +30,6 @@
         "logLevel": "debug",
         "changeOrigin": true
     },
-    "/album/add" : {
-        "target": "http://localhost",
-        "sucure": false,
-        "logLevel": "debug",
-        "changeOrigin": true
-    },
     "/albums" : {
         "target": "http://localhost",
         "sucure": false,
@@ -89,6 +83,35 @@
         "sucure": false,
         "logLevel": "debug",
         "changeOrigin": true
+    },
+    "/upload/album" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/newsletter/subscribe" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/newsletter/unsubscribe" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/password/recover" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/password/reset" : {
+        "target": "http://localhost",
+        "sucure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
     }
-    
 }
