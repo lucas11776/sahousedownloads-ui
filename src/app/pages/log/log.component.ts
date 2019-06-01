@@ -52,7 +52,7 @@ export class LogComponent implements OnInit {
           this.router.navigate(['']);
         }
       },
-      error => alert(error)
+      error => this.error = error
     );
   }
 

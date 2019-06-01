@@ -12,6 +12,19 @@ export class AuthService {
   constructor(private userServ: UserService) { }
 
   /**
+   * Check if user not logged in
+   * 
+   * @return {Observable<boolean>}
+   */
+  guest(): Observable<boolean>{
+    return this.userServ.user.pipe(
+      retry(2),
+      map(response => response.role == null),
+      take(1)
+    );
+  }
+
+  /**
    * Check if user logged in
    * 
    * @return {Observable<boolean>}

@@ -17,10 +17,11 @@ import { ContactComponent }     from './pages/contact/contact.component';
 // Auth-Guard
 import { UserGuard }            from './auth/user.guard';
 import { EditorGuard }          from './auth/editor.guard';
+import { GuestGuard }           from './auth/guest.guard';
  
 const routes: Routes = [
   { path: '' , component: HomeComponent },
-  { path: 'log', component: LogComponent },
+  { path: 'log', component: LogComponent, canActivate: [GuestGuard] },
   { path: 'account', component: AccountComponent, canActivate: [UserGuard] },
   { path: 'account/:id', component: UserComponent },
   { path: 'blog', component: BlogComponent },
