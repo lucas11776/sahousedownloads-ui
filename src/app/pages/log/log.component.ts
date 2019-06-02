@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { map }    from 'rxjs/operators';
 
 import { UserService } from '../../service/user.service';
-import { Register, RegisterResponse }    from '../../models/register';
-import { Login, LoginResponse } from 'src/app/models/login';
+import { Register, RegisterResponse }  from '../../models/register';
+import { Login, LoginResponse }        from 'src/app/models/login';
 
 @Component({
   selector: 'app-log',
@@ -12,18 +13,22 @@ import { Login, LoginResponse } from 'src/app/models/login';
 })
 export class LogComponent implements OnInit {
 
-  error:string;
-
   registerResponse:RegisterResponse;
 
   loginResponse: LoginResponse;
 
-  hasAccount:boolean = false;
+  hasAccount:boolean;
+
+  async:boolean;
   
-  view:boolean; // (true = login || false = register)
+  error:string;
+  
+  view:boolean;
 
   constructor(private user: UserService, private router: Router) {
-    this.view = false;
+    this.view       = true;
+    this.hasAccount = false;
+    this.async      = false;
   }
 
   ngOnInit() {
@@ -31,28 +36,43 @@ export class LogComponent implements OnInit {
 
   registerUser($event:Register){
     this.clear();
-    this.user.register($event).subscribe(
-      response => {
-        this.registerResponse = response;
-        if(response.response){
-          this.hasAccount = response.response;
-        }
-      },
-      error => this.error = error
-    );
+    this.async = true;
+    this.user.register($event)
+    .pipe(
+      map(response => {
+        response.response === true ? this.hasAccount = true : null;
+        this.async = false;
+        return response;
+      })
+    )
+    .subscribe(
+      response => this.registerResponse = response,
+      error    => {
+        this.error = error;
+        this.async = false;
+      }
+    )
   }
 
   loginUser($event:Login){
-    this.clear(); // clear errors
-    this.user.login($event).subscribe(
-      response => {
-        this.loginResponse = response;
+    this.clear();
+    this.user.login($event)
+    .pipe(
+      map(response => {
+        this.async = false;
         if(response.response){
           this.user.setToken(response.data.token);
           this.router.navigate(['']);
         }
-      },
-      error => this.error = error
+        return response;
+      })
+    )
+    .subscribe(
+      response => this.loginResponse = response,
+      error    => {
+        this.error = error;
+        this.async = false;
+      }
     );
   }
 
