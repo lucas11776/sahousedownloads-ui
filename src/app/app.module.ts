@@ -20,6 +20,8 @@ import { NavbarComponent }      from './components/navbar/navbar.component';
 import { RegisterComponent }    from './components/register/register.component';
 import { LoginComponent }       from './components/login/login.component';
 import { TokenInterceptor }     from './interceptor/token-interceptor.service';
+import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { TokenInterceptor }     from './interceptor/token-interceptor.service';
     UploadBlogComponent,
     NavbarComponent,
     RegisterComponent,
-    LoginComponent],
+    LoginComponent,
+    RecoverPasswordComponent,
+    ResetPasswordComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
