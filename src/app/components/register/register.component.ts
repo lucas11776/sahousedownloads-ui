@@ -28,19 +28,19 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  emailExist(control:AbstractControl){
+  emailExist(control:FormControl){
     return null;
   }
 
-  usernameExist(control:AbstractControl){
+  usernameExist(control:FormControl){
     return null;
   }
 
-  passwordMatch(control:AbstractControl){
+  passwordMatch(control:FormControl){
     if(control){
       const confirmPasswordControl = control.root.get('confirm_password');
       if(confirmPasswordControl){
-        const password = control.value;
+        const password        = control.value;
         const confirmPassword = confirmPasswordControl.value;
         if(password !== confirmPassword){
           return {passwordMatch: true};

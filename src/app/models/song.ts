@@ -11,3 +11,11 @@ export interface Song {
     domain:string,
     album:string
 }
+
+export interface UploadSong {
+    picture:File;
+    audio:File;
+    title: string;
+    artist:string;
+    album:number;
+}
