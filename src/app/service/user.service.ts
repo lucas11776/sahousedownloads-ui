@@ -16,7 +16,7 @@ export class UserService {
   /**
    * User details
    * 
-   * @var {Observable<UserAccount>}
+   * @var { Observable<UserAccount> }
    */
   user: Observable<UserAccount>;
 
@@ -28,10 +28,22 @@ export class UserService {
   }
 
   /**
+   * Get user form database using (username/email)
+   * 
+   * @param username 
+   * @return {}
+   */
+  getUser(user: {username:string}){
+    return this.http.post<any>('api', user).pipe(
+      retry(2), take(1), catchError(this.httpError.getError)
+    );
+  }
+
+  /**
    * Register user/client
    * 
-   * @param {Register}
-   * @return {Observable<RegisterResponse>}
+   * @param Arra
+   * @return Observable<RegisterResponse>
    */
   register(application:Register): Observable<RegisterResponse>{
     return this.http.post<RegisterResponse>('register', application).pipe(
@@ -43,10 +55,9 @@ export class UserService {
    * Login user/client
    * 
    * @param {Login}
-   * @return Observable
+   * @return Observable<LoginResponse>
    */
   login(Login:Login){
-    
     return this.http.post<LoginResponse>('login', Login).pipe(
       retry(2), take(1), catchError(this.httpError.getError)
     );
