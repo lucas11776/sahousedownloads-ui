@@ -28,8 +28,8 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit() {
     this.resetForm = this.formBulider.group({
-      'token':    [this.token, [Validators.required]],
-      'password': ['', [Validators.required]],
+      'token':            [this.token, [Validators.required]],
+      'password':         ['', [ Validators.required]],
       'confirm_password': ['', [Validators.required]]
     });
   }
@@ -37,6 +37,7 @@ export class ResetPasswordComponent implements OnInit {
   reset(){
     this.passwordServ.resetPassword(this.resetForm.value)
     .pipe(
+      
     )
     .subscribe(
       response => this.response = response,

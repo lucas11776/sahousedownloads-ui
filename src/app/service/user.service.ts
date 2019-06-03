@@ -33,8 +33,8 @@ export class UserService {
    * @param username 
    * @return {}
    */
-  getUser(user: {username:string}){
-    return this.http.post<any>('api', user).pipe(
+  getUser(user){
+    return this.http.post('api', user).pipe(
       retry(2), take(1), catchError(this.httpError.getError)
     );
   }
