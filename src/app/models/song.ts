@@ -13,9 +13,17 @@ export interface Song {
 }
 
 export interface UploadSong {
-    picture:File;
-    audio:File;
-    title: string;
-    artist:string;
-    album:number;
+    
+}
+
+export interface UploadSongResponse {
+    response:boolean;
+    data: {
+        message:string;
+        picture:string;
+        audio:string;
+        title: string;
+        artist:string;
+        album:string;
+    }
 }

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
-import { Song } from '../models/song'
+import { Song, UploadSong, UploadSongResponse } from '../models/song'
 import { HttpErrorService } from '../service/http-error.service';
 
 @Injectable({
@@ -20,8 +20,7 @@ export class SongService {
    */
   latest(): Observable<Array<Song>>{
     return this.http.post<Array<Song>>('songs/latest', {}).pipe(
-      retry(2),
-      catchError(this.httpError.error)
+      retry(2), catchError(this.httpError.getError)
     )
   }
 
@@ -32,8 +31,7 @@ export class SongService {
    */
   mostLiked(): Observable<Array<Song>>{
     return this.http.post<Array<Song>>('songs/most-liked', {}).pipe(
-      retry(2),
-      catchError(this.httpError.error)
+      retry(2), catchError(this.httpError.getError)
     )
   }
 
@@ -44,8 +42,7 @@ export class SongService {
    */
   mostDownloaded(): Observable<Array<Song>>{
     return this.http.post<Array<Song>>('songs/most-downloaded', {}).pipe(
-      retry(2),
-      catchError(this.httpError.error)
+      retry(2), catchError(this.httpError.getError)
     )
   }
 
@@ -54,8 +51,10 @@ export class SongService {
    * 
    * @return {Observable<Array<Song>>}
    */
-  upload(){
-
+  upload(song:UploadSong):Observable<UploadSongResponse>{
+    return this.http.post<UploadSongResponse>('upload/song', song).pipe(
+      retry(2), catchError(this.httpError.getError)
+    )
   }
 
   /**

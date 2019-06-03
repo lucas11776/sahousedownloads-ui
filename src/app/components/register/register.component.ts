@@ -18,11 +18,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBulider.group({
-      'username': ['', [ Validators.required, Validators.minLength(2), Validators.maxLength(50) ]],
-      'email':    ['', [ Validators.required, Validators.maxLength(50), Validators.email ]],
-      'name':     ['', [ Validators.maxLength(50) ]],
-      'surname':  ['', [ Validators.maxLength(50) ]],
-      'password': ['', [ Validators.required, Validators.pattern('[(a-z|A-Z){4,6}(0-9){1,}(!|@|#|$|%|^|*|(|)|+|?){1,}]{6,20}') ]],
+      'username':         ['', [ Validators.required, Validators.minLength(2), Validators.maxLength(50) ]],
+      'email':            ['', [ Validators.required, Validators.maxLength(50) ]],
+      'name':             ['', [ Validators.maxLength(50) ]],
+      'surname':          ['', [ Validators.maxLength(50) ]],
+      'password':         ['', [ Validators.required, Validators.pattern('[(a-z|A-Z){4,6}(0-9){1,}(!|@|#|$|%|^|*|(|)|+|?){1,}]{6,20}') ]],
       'confirm_password': ['', [ this.passwordMatch ]]
     });
 
@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
         return {passwordMatch: false}
       }
     }
-    return false;
+    return null;
   }
 
   register(){
